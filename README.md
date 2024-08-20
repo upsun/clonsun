@@ -40,11 +40,11 @@ Usage of clonsun:
 
 #### Samples of convertion
 
-- Clone into new project (created by upsun_clone)  
-`$ upsun_clone --src_provider=platform --src_project=xxxxxxxxxxxxx --src_env=master --dst_provider=upsun --dst_project="" --dst_env="" --dst_organisation=mick --dst_region=eu-3.platform.sh`
+- Clone into new project (created by clonsun)  
+`$ clonsun --src_provider=platform --src_project=xxxxxxxxxxxxx --src_env=master --dst_provider=upsun --dst_project="" --dst_env="" --dst_organisation=mick --dst_region=eu-3.platform.sh`
 - Clone into existing project (and different environement)  
-`$ upsun_clone --src_provider=platform --src_project=xxxxxxxxxxxxx --src_env=master --dst_provider=upsun --dst_project="yyyyyyyyyyyyy" --dst_env="main" --dst_organisation=mick --dst_region=eu-3.platform.sh`
-- Clone into new project (created by upsun_clone) without copy of data.  
-`$ upsun_clone --no_data --src_provider=platform --src_project=xxxxxxxxxxxxx --src_env=master --dst_provider=upsun --dst_project="" --dst_env="" --dst_organisation=mick --dst_region=eu-3.platform.sh`
+`$ clonsun --src_provider=platform --src_project=xxxxxxxxxxxxx --src_env=master --dst_provider=upsun --dst_project="yyyyyyyyyyyyy" --dst_env="main" --dst_organisation=mick --dst_region=eu-3.platform.sh`
+- Clone into new project (created by clonsun) without copy of data.  
+`$ clonsun --no_data --src_provider=platform --src_project=xxxxxxxxxxxxx --src_env=master --dst_provider=upsun --dst_project="" --dst_env="" --dst_organisation=mick --dst_region=eu-3.platform.sh`
 - Copy only data.  
-`$ upsun_clone --only_data --src_provider=platform --src_project=xxxxxxxxxxxxx --src_env=master --dst_provider=upsun --dst_project="" --dst_env="" --dst_organisation=mick --dst_region=eu-3.platform.sh`
+`$ clonsun --only_data --src_provider=platform --src_project=xxxxxxxxxxxxx --src_env=master --dst_provider=upsun --dst_project="" --dst_env="" --dst_organisation=mick --dst_region=eu-3.platform.sh`
