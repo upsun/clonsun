@@ -5,10 +5,70 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+  schedule:
+  - cron: '0 10 * * 1' # run "At 10:00 on Monday"
+
+permissions:
+  contents: read
+
+env:
+  GOPRIVATE: github.com/upsun/lib-sun,github.com/upsun/convsun
 
 jobs:
 
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-go@v4
+      with:
+        go-version: '1.22'
+        check-latest: true
+    - name: Run config private repo
+      env:
+        TOKEN: ${{ secrets.MICK_GITHUB_TOKEN }}
+      run: git config --global url."https://user:${TOKEN}@github.com".insteadOf https://github.com
+    - name: Run Go Format
+      run: gofmt -s -w . && git diff --exit-code
+    - name: Run Go Tidy
+      run: go mod tidy && git diff --exit-code
+    - name: Run Go Vet
+      run: go vet ./...
+    - name: Run Go Mod
+      run: go mod download
+    - name: Run Go Mod Verify
+      run: go mod verify
+    - uses: golangci/golangci-lint-action@v6
+      with:
+        version: latest
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-go@v4
+    - name: Run config private repo
+      env:
+        TOKEN: ${{ secrets.MICK_GITHUB_TOKEN }}
+      run: git config --global url."https://user:${TOKEN}@github.com".insteadOf https://github.com
+    - name: Run tests
+      run: go test -v -count=1 -race -shuffle=on -coverprofile=coverage.txt ./...
+    - name: Go Benchmark
+      run: go test -v -shuffle=on -run=- -bench=. -benchtime=1x ./...
+    - name: Install govulncheck
+      run: go install golang.org/x/vuln/cmd/govulncheck@latest
+    # - name: Run govulncheck
+    #   run: govulncheck -test ./...
+    # - name: Upload Coverage
+    #   uses: codecov/codecov-action@v3
+    #   continue-on-error: true  # we don't care if it fails
+    #   with:
+    #     token: ${{secrets.CODECOV_TOKEN}}  # set in repository settings
+    #     file: ./coverage.txt  # file from the previous step
+    #     fail_ci_if_error: false
+
   build:
+    needs: [test, lint]
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -20,14 +80,13 @@ jobs:
             goos: windows
     steps:
     - uses: actions/checkout@v4
-
-    - name: Set up Go
-      uses: actions/setup-go@v4
+    - uses: actions/setup-go@v4
       with:
         go-version: '1.22'
+    - name: Run config private repo
+      env:
+        TOKEN: ${{ secrets.MICK_GITHUB_TOKEN }}
+      run: git config --global url."https://user:${TOKEN}@github.com".insteadOf https://github.com
 
     - name: Build
       run: GOARCH=${{ matrix.goarch }} GOOS=${{ matrix.goos }} go build -v ./...
-
-    # - name: Test
-    #   run: go test -v ./...
