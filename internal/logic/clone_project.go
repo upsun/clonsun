@@ -24,6 +24,8 @@ func Clone(projectSrcContext entity.ProjectGlobal, projectDstContext entity.Proj
 	err := cmd.ProjectRead(&projectSrcContext)
 	if err == nil {
 		cmd.VariablesRead(projectSrcContext)
+		cmd.VariablesEnvRead(projectSrcContext)
+		cmd.PopulateSensitive(projectSrcContext)
 		cmd.UsersRead(projectSrcContext)
 		cmd.ServicesMountsRead(projectSrcContext)
 
@@ -47,6 +49,7 @@ func Clone(projectSrcContext entity.ProjectGlobal, projectDstContext entity.Proj
 			// Push Meta-model to Dst projecrt
 			cmd.ProjectWrite(projectDstContext)
 			cmd.VariablesWrite(projectDstContext)
+			cmd.VariablesEnvWrite(projectDstContext)
 			if !app.ArgsM.NoUsers {
 				cmd.UsersWrite(projectDstContext)
 			}
