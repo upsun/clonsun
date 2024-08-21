@@ -3,7 +3,7 @@ ClonSun
 
 This tool makes a new copy of a project from a platform (Platform.sh, Upsun) to another platform (with some data) and convert at same-time for upsun.
 
-> **WARNING : This tool does not clone the **secret** values and other services such as: ElasticSearch, mongoDB...**  
+> **WARNING : This tool does not clone the other services such as: ElasticSearch, mongoDB...**  
 
 > **NOTE : This tool automatically converts to upsun, but the reverse is not supported.**
 
