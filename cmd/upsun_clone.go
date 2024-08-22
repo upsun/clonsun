@@ -6,6 +6,8 @@ import (
 	flag "github.com/spf13/pflag"
 	app "github.com/upsun/clonsun"
 	logic "github.com/upsun/clonsun/internal/logic"
+	libconv "github.com/upsun/convsun"
+	lib "github.com/upsun/lib-sun"
 	entity "github.com/upsun/lib-sun/entity"
 	utils "github.com/upsun/lib-sun/utility"
 )
@@ -140,6 +142,17 @@ func main() {
 	}
 	//TODO utils.HasSufficientRights(projectTo.Provider)
 	//TODO utils.HasSufficientRights(projectFrom.Provider)
+
+	//TODO(Mick) Hack (replace by context object)
+	lib.VERSION = app.VERSION
+	lib.Args = app.Args
+	lib.ArgsC = app.ArgsC
+	lib.ArgsM = app.ArgsM
+	lib.ArgsS = app.ArgsS
+	libconv.Args = app.Args
+	libconv.ArgsC = app.ArgsC
+	libconv.ArgsM = app.ArgsM
+	libconv.ArgsS = app.ArgsS
 
 	// Process
 	logic.Clone(projectFrom, projectTo)
