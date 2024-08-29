@@ -18,8 +18,8 @@ github.com/stretchr/testify v1.9.0 h1:HtqpIVDClZ4nwg75+f6Lvsy/wHu+3BoSGCbBAcpTsT
 github.com/stretchr/testify v1.9.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
 github.com/upsun/convsun v0.3.2 h1:e25DpkIkg8JeYAoIw3xpgnLEDH9UV6VzbKENXaXdHL4=
 github.com/upsun/convsun v0.3.2/go.mod h1:r1xF3CcYqWXchsYaPRYuvqlf2H24/Miw+cLng3vUiuM=
-github.com/upsun/lib-sun v0.3.5 h1:Np4d2pPhNy6pFwNfoA0cy7b4UyjfqCKAh+DybUSSAXk=
-github.com/upsun/lib-sun v0.3.5/go.mod h1:8AtRNv0L+c9qCS/maO/OVFIn2VDi89LTkWwpB7YKTDE=
+github.com/upsun/lib-sun v0.3.8 h1:vrSQ/eV/NFyi6PmCdQUltb/4vw7vBSnzFFf10LCzs0o=
+github.com/upsun/lib-sun v0.3.8/go.mod h1:8AtRNv0L+c9qCS/maO/OVFIn2VDi89LTkWwpB7YKTDE=
 golang.org/x/sys v0.18.0 h1:DBdB3niSjOA/O0blCZBqDefyWNYveAYMNF1Wum0DYQ4=
 golang.org/x/sys v0.18.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
 golang.org/x/text v0.14.0 h1:ScX5w1eTa3QqT8oi6+ziP7dTV1S2+ALU0bI+0zXKWiQ=

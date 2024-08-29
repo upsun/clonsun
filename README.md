@@ -33,7 +33,7 @@ Usage of clonsun:
 | upsun    | upsun | ✅         | ✅     | |
 | ibexa    | psh   | ✅         | ⛔     | |
 | shopware | psh   | ✅         | ⛔     | |
-| pimcore  | psh   | ✅         | ⛔     | |
+| pimcore-cloud  | psh   | ✅         | ⛔     | |
 | webpaas  | psh   | ✅(partial)| ✅     | User is not apply |
 | magento  | psh   | ⛔         | ⛔     | |
 
