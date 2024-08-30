@@ -25,9 +25,16 @@ func Clone(projectSrcContext entity.ProjectGlobal, projectDstContext entity.Proj
 	if err == nil {
 		cmd.VariablesRead(projectSrcContext)
 		cmd.VariablesEnvRead(projectSrcContext)
-		cmd.PopulateSensitive(projectSrcContext)
 		cmd.UsersRead(projectSrcContext)
 		cmd.ServicesMountsRead(projectSrcContext)
+
+		//TODO(mick) Hack : Find best method for that
+		appName := ""
+		for _, mount := range projectSrcContext.Mounts {
+			appName = mount.Application
+			break
+		}
+		cmd.PopulateSensitive(projectSrcContext, appName) // Need to be load after ServicesMountsRead for mount.app
 
 		if !app.ArgsM.NoData && !app.ArgsM.NoLocal {
 			if !app.ArgsM.OnlyMount {
