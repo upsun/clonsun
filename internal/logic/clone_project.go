@@ -14,7 +14,7 @@ func Clone(projectSrcContext entity.ProjectGlobal, projectDstContext entity.Proj
 	// Define workspace
 	var ws utils.PathTmp
 	if utils.IsKeep() {
-		ws = utils.BuildPersistWorkspace()
+		ws = utils.BuildPersistWorkspace(app.ArgsM.KeepData)
 	} else {
 		ws = utils.BuildTemporyWorkspace()
 		defer ws.CleanUp() // clean up on exit
