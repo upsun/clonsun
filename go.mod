@@ -5,7 +5,7 @@ go 1.23.5
 require (
 	github.com/spf13/pflag v1.0.5
 	github.com/upsun/convsun v0.3.4
-	github.com/upsun/lib-sun v0.3.13
+	github.com/upsun/lib-sun v0.3.15
 )
 
 require (
